@@ -32,9 +32,17 @@ export default function Search() {
   };
 
   return (
-    <div>
-      <input type="text" value={searchTerm} onChange={handleInputChange} />
-      <button onClick={handleSearch}>Search</button>
+    <div className="searchFunction">
+      <h1>Search for a Football Friend</h1>
+      <input
+        className="searchInputForFootballFriend"
+        type="text"
+        value={searchTerm}
+        onChange={handleInputChange}
+      />
+      <button className="searchButtonForFootballFriend" onClick={handleSearch}>
+        Search
+      </button>
       {searchResults.length > 0 && (
         <ul>
           {searchResults.map((user) => (
