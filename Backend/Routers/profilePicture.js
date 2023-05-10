@@ -16,7 +16,7 @@ const profilePictureUpload = async (req, res) => {
     await sharp(resizedImage).toFile(req.file.path);
     // will this have to have authentication involved? EG web token validation etc
 
-    const user = await User.findById("6458fb6bb226e76fb3af0d16");
+    const user = await User.findById("req.body.userID");
     if (user) {
       // update key with path of pic
       user.profilePicturePath = req.file.path;
@@ -33,7 +33,8 @@ const profilePictureUpload = async (req, res) => {
 };
 
 router.route("/uploadProfilePicture").post(
-  // passport.authenticate("jwt", {session: false}),
+  passport.authenticate("jwt", {session: false}),
+
   upload.single("profilePicture"), 
   profilePictureUpload);
 module.exports = router;
