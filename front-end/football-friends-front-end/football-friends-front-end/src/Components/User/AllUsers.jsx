@@ -130,6 +130,7 @@ export default function AllUsers() {
           </div>
         </>
       </div>
-    );
-  }
-}
+      {ourUsers}
+    </>
+  );
+}}
