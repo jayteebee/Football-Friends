@@ -33,11 +33,41 @@ export default function Friends() {
   }
 
   return (
-    <Container>
-      <h2 className="text-center">Friends</h2>
-      <Row>
-        {ourUsers}
-      </Row>
+    <Container fluid className="vh-100 d-flex flex-column">
+      <br />
+      <div
+        className="d-flex justify-content-center align-items-center"
+        style={{ height: "30vh" }}
+      >
+        <div
+          style={{
+            height: "350px",
+            width: "350px",
+            overflow: "hidden",
+            borderRadius: "50%",
+            backgroundColor: "transparent",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <img
+            src="https://i.imgur.com/AGm0oCR.png"
+            alt="your-image-description"
+            className="img-fluid"
+            style={{
+              width: "auto",
+              height: "auto",
+              clipPath: "circle(38% at 50% 50%)",
+            }}
+          />
+        </div>
+      </div>
+
+      <h2 className="text-center" style={{ marginTop: "30px" }}>
+        Friends
+      </h2>
+      <Row>{ourUsers}</Row>
     </Container>
   );
 }

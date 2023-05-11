@@ -42,19 +42,34 @@ export default function Search() {
 
 return (
   <div className="container mt-5">
+    <div
+      style={{
+        width: "350px",
+        height: "350px",
+        overflow: "hidden",
+        borderRadius: "50%",
+        backgroundColor: "transparent",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        margin: "0 auto", // Center the div horizontally
+      }}
+    >
+      <img
+        src="https://i.imgur.com/AGm0oCR.png"
+        alt="your-image-description"
+        className="img-fluid"
+        style={{
+          width: "100%",
+          height: "auto",
+          clipPath: "circle(38% at 50% 50%)",
+        }}
+      />
+    </div>
     <div className="row justify-content-center">
       <div className="col-lg-6">
         <br />
         <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-
         <div className="input-group">
           <input
             type="text"
@@ -63,11 +78,7 @@ return (
             value={searchTerm}
             onChange={handleInputChange}
           />
-          <button
-            className="btn btn-primary"
-            type="button"
-            onClick={handleSearch}
-          >
+          <button className="btn btn-dark" type="button" onClick={handleSearch}>
             Search
           </button>
         </div>

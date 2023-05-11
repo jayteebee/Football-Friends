@@ -1,80 +1,109 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { test } from "../../API/AuthenticationApiCalls";
-import { seedUsers } from "../../seed";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Container, Row, Col } from "react-bootstrap";
+import { getAllUsers } from "../../API/UserApiCalls";
 
 // import { getAllUsers, getOneUser, updateUser } from "../../API/UserApiCalls";
 // import { createAdmiredPlayer, deleteAdmiredPlayer, updateAdmiredPlayer } from "../../API/PlayersAdmiredApiCalls";
 // import { createUser } from "../../API/AuthenticationApiCalls";
 export default function Homepage() {
-  /**** TBC on what content should go here. Potentially use a third party API to
-   * populate this with football news or info on some random football players ****/
-  const [message, setMessage] = useState("");
-  useEffect(() => {
-    test()
-      .then((result) => result.message)
-      .then((output) => setMessage(output));
-  }, []);
-
+  const [allUsers, setAllUsers] = useState("");
   const [localUsers, setLocalUsers] = useState([]);
   const [selectedLocation, setSelectedLocation] = useState("");
   const [selectedClub, setSelectedClub] = useState("");
   const [clubUsers, setClubUsers] = useState([]);
 
+  useEffect(() => {
+    getAllUsers().then((output) => setAllUsers(output));
+  }, []);
+
   const handleLocationChange = (e) => {
     const location = e.target.value;
     setSelectedLocation(location);
     if (location) {
-      const filteredUsers = seedUsers.filter(
+      const filteredUsers = allUsers.filter(
         (user) => user.location === location
       );
       setLocalUsers(filteredUsers);
     } else {
-      setLocalUsers(seedUsers);
+      setLocalUsers(allUsers);
     }
   };
 
   const handleClubChange = (e) => {
     const club = e.target.value;
+    console.log(e.target.value);
     setSelectedClub(club);
     if (club) {
-      const filteredUsers = seedUsers.filter(
-        (user) => user.favouriteClub === club
+      const filteredUsers = allUsers.filter(
+        (user) => user.favouriteTeam === club
       );
       setClubUsers(filteredUsers);
     } else {
-      setClubUsers(seedUsers);
+      setClubUsers(allUsers);
     }
   };
 
   const filteredUsers = localUsers;
 
-  return (
-    <Container fluid className="vh-100 d-flex flex-column">
-      <br />
-      <h1 className="text-center">
-        👍🏻Football Friends
-        <span style={{ display: "inline-block", transform: "scaleX(-1)" }}>
-          👍🏻
-        </span>
-      </h1>
+
+return (
+  <Container fluid className="d-flex flex-column">
+    <br />
+    <div
+      className="d-flex justify-content-center align-items-center"
+      style={{ height: "30vh" }}
+    >
+      <div
+        style={{
+          height: "350px",
+          width: "350px",
+          overflow: "hidden",
+          borderRadius: "50%",
+          backgroundColor: "transparent",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <img
+          src="https://i.imgur.com/AGm0oCR.png"
+          alt="your-image-description"
+          className="img-fluid"
+          style={{
+            width: "auto",
+            height: "auto",
+            clipPath: "circle(38% at 50% 50%)",
+          }}
+        />
+      </div>
+    </div>
+
+
       <br />
       <br />
       <div className="homepage">
         <div className="row">
-          <div className="col"></div>
-          <div className="col">
+          <div className="col-md-2"></div>
+          <div className="col-md-4">
             <div className="localUsers">
               <h2 className="text-center">Local Football Friends</h2>
-              <Form.Label>Find Football friends in...</Form.Label>
+              <Form.Label className="text-center">
+                Find Football friends in...
+              </Form.Label>
               <Form.Select
                 value={selectedLocation}
                 onChange={handleLocationChange}
               >
-                <option value="Set Location">Select Location</option>
-                <option value="">United Kingdom</option>
+                <option value="Set Location">Select a location</option>
+                <option value="Avon">Avon</option>
+                <option value="Bedfordshire">Bedfordshire</option>
+                <option value="Berkshire">Berkshire</option>
+                <option value="Bristol">Bristol</option>
+                <option value="Buckinghamshire">Buckinghamshire</option>
                 <option value="Cambridgeshire">Cambridgeshire</option>
                 <option value="Cheshire">Cheshire</option>
                 <option value="Cleveland">Cleveland</option>
@@ -121,22 +150,39 @@ export default function Homepage() {
                 <option value="West Yorkshire">West Yorkshire</option>
                 <option value="Wiltshire">Wiltshire</option>
               </Form.Select>
-              <ul>
-                {localUsers.map((user) => (
-                  <li key={user.email}>
-                    {user.profileName}
-                    <br />
-                    {user.favouriteClub}
-                    <br />
-                  </li>
+              <ul className="list-unstyled mt-3">
+                {localUsers.map((user, index) => (
+                  <Link
+                    to="/ViewUser"
+                    state={{ id: user._id }}
+                    key={index}
+                    style={{ textDecoration: "none" }}
+                  >
+                    <li
+                      className={`mb-3 border p-3 rounded ${
+                        index === 0 ? "mt-3" : ""
+                      }`}
+                    >
+                      <span className="fw-bold link-unstyled">
+                        {user.profileName}
+                      </span>
+                      <br />
+                      {user.favouriteTeam}
+                      <br />
+                      Favourite Player: {user.playersAdmired[0].name}
+                      <br />
+                    </li>
+                  </Link>
                 ))}
               </ul>
             </div>
           </div>
-          <div className="col">
+          <div className="col-md-4">
             <div className="userLikeThis">
-              <h2 className="text-center"> My Club Football Friends</h2>
-              <Form.Label>Football friends who support... </Form.Label>
+              <h2 className="text-center">My Club Football Friends</h2>
+              <Form.Label className="text-center">
+                Football friends who support...{" "}
+              </Form.Label>
               <Form.Select onChange={handleClubChange} value={selectedClub}>
                 <option value="">Select a team</option>
                 <option value="Arsenal">Arsenal</option>
@@ -160,35 +206,53 @@ export default function Homepage() {
                 <option value="West Ham United">Wet Ham United</option>
                 <option value="Wolves">Wolverhamton Wanderers</option>
               </Form.Select>
-              <ul>
-                {clubUsers.map((user) => (
-                  <li key={user.id}>{user.profileName}</li>
+              <ul className="list-unstyled mt-3">
+                {clubUsers.map((user, index) => (
+                  <Link
+                    to="/ViewUser"
+                    state={{ id: user._id }}
+                    key={index}
+                    style={{ textDecoration: "none" }}
+                  >
+                    <li
+                      className={`mb-3 border p-3 rounded ${
+                        index === 0 ? "mt-3" : ""
+                      }`}
+                    >
+                      <span className="fw-bold">{user.profileName}</span>
+                      <br />
+                      {user.location}
+                      <br />
+                      Favourite Player: {user.playersAdmired[0].name}
+                      <br />
+                    </li>
+                  </Link>
                 ))}
               </ul>
             </div>
           </div>
-          <div className="col"></div>
+          <div className="col-md-2"></div>
         </div>
-        <div className="row flex-grow-1">
-          <div className="col"></div>
-          <div className="col d-flex flex-column justify-content-center">
-            <div className="newUsers">
-              <h2 className="text-center">New Football Friends</h2>
-            </div>
-          </div>
-          <div className="col d-flex flex-column justify-content-center">
-            <br />
+        <div className="col-md-2"></div>
+      </div>
+      <div className="row flex-grow-1">
+        <div className="col-md-2"></div>
+        <div className="col-md-4 d-flex flex-column justify-content-center">
+          <div className="newUsers">
+            <h2 className="text-center"></h2>
 
-            <div className="trendingUsers">
-              <h2 className="text-center">Trending Football Friends</h2>
+          </div>
+          <div className="col-md-4 d-flex justify-content-center">
+            <br />
+            <div className="trendingUsers text-center">
+              <h2></h2>
             </div>
           </div>
-          <div className="col"></div>
+          <div className="col-md-2"></div>
         </div>
       </div>
     </Container>
   );
-
 }
 
 // const test = getAllUsers()

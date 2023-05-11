@@ -71,6 +71,30 @@ export default function Register() {
 
   return (
     <Container fluid className="vh-100 d-flex flex-column">
+      <div
+        style={{
+          width: "350px",
+          height: "350px",
+          overflow: "hidden",
+          borderRadius: "50%",
+          backgroundColor: "transparent",
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          margin: "0 auto", 
+        }}
+      >
+        <img
+          src="https://i.imgur.com/AGm0oCR.png"
+          alt="your-image-description"
+          className="img-fluid"
+          style={{
+            width: "100%",
+            height: "auto",
+            clipPath: "circle(38% at 50% 50%)",
+          }}
+        />
+      </div>
       <Row className="flex-grow-1">
         <Col></Col>
         <Col className="d-flex align-items-center justify-content-center">
@@ -141,7 +165,7 @@ export default function Register() {
                     <option value="AstonVilla">Aston Villa</option>
                     <option value="Bournemouth">Bournemouth</option>
                     <option value="Brentford">Brentford</option>
-                    <option value="Brighton&HoveAlbion">Brighton</option>
+                    <option value="Brighton&Hove Albion">Brighton</option>
                     <option value="Chelsea">Chelsea</option>
                     <option value="CrystalPalace">Crystal Palace</option>
                     <option value="Everton">Everton</option>
@@ -150,7 +174,7 @@ export default function Register() {
                     <option value="LeicesterCity">Leicester City</option>
                     <option value="Liverpool">Liverpool</option>
                     <option value="ManchesterCity">Manchester City</option>
-                    <option value="ManchesterUnited">Manchester United</option>
+                    <option value="Manchester United">Manchester United</option>
                     <option value="NewcastleUnited">Newcaste United</option>
                     <option value="NottinghamForest">Nottingham Forest</option>
                     <option value="Southampton">Southampton</option>

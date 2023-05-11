@@ -13,7 +13,7 @@ import { getAllUsers } from "../../API/UserApiCalls";
 import { Container, Row, Col } from "react-bootstrap";
 
 export default function AllUsers() {
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
 
   const handleInputChange = (event) => {
@@ -66,33 +66,67 @@ export default function AllUsers() {
     } else {
       ourUsers = users.map((user, index) => {
         return (
-          <Col xs={12} sm={6} md={4} lg={3} key={user._id}>
+          <Col xs={12} sm={6} md={4} lg={3} className="p-4" key={user._id}>
             <UserThumbnail user={user} />
           </Col>
         );
       });
     }
-    return (
-      <>
-        <h2>All Users</h2>
-        <div className="container mt-5">
-          <div className="row justify-content-center">
-            <div className="col-lg-6">
-              <div className="input-group">
-                <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Search for users"
-                  value={searchTerm}
-                  onChange={handleInputChange}
-                />
-              </div>
+
+return (
+  <div
+    style={{
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+    }}
+  >
+    <div
+      style={{
+        width: "350px",
+        height: "350px",
+        overflow: "hidden",
+        borderRadius: "50%",
+        backgroundColor: "transparent",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        margin: "0 auto",
+      }}
+    >
+      <img
+        src="https://i.imgur.com/AGm0oCR.png"
+        alt="your-image-description"
+        className="img-fluid"
+        style={{
+          width: "100%",
+          height: "auto",
+          clipPath: "circle(38% at 50% 50%)",
+        }}
+      />
+    </div>
+    <>
+      <h2 className="text-center" style={{ marginTop: "30px" }}>
+        All Users
+      </h2>
+      <Container className="mt-5">
+        <div className="d-flex justify-content-center">
+          <div className="col-lg-6">
+            <div className="input-group">
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Search for users"
+                value={searchTerm}
+                onChange={handleInputChange}
+              />
             </div>
           </div>
         </div>
-        {ourUsers}
-      </>
-    );
+      </Container>
+      <div className="d-flex flex-wrap justify-content-center">{ourUsers}</div>
+    </>
+  </div>
+);
   }
 }
-
