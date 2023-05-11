@@ -1,13 +1,20 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const { currentDB, localDB, port } = require("./Configuration/config");
+// const { port } = require("./Configuration/config");
+const dotenv = require('dotenv');
 const User = require("./Models/user");
 const { AdmiredPlayer } = require("./Models/admiredPlayer");
 const userRoutes = require("./Routers/users");
 const authenticationRoutes = require("./Routers/authentication");
 const passport = require("passport");
 const jwt = require("jsonwebtoken");
+
+dotenv.config()
+
+const port = process.env.EXPRESS_PORT || 5001
+const localDB = 'mongodb://localhost:27017/football-friends'
+const currentDB = process.env.MONGODB_URI || localDB;
 
 // Require Passport Strategy and Options
 const strategy = require("./Authentication/passportStrategy");
@@ -19,13 +26,19 @@ const profilePictureRouter = require("./Routers/profilePicture")
 
 
 const app = express();
+console.log(process.env.MONGODB_URI)
+console.log(process.env.EXPRESS_PORT)
+console.log(currentDB)
+// Establish Database Connection
+mongoose.connect(currentDB, { useNewUrlParser: true });
+mongoose.connection.once('open', () => console.log('Connected to MongoDB'));
 
 // Connect to mongoDB
-mongoose.connect(currentDB);
-const db = mongoose.connection;
-db.on("error", (error) => console.log(`ERROR: ${error.message}`));
-db.on("connected", () => console.log(`MongoDB Connected: ${currentDB}`));
-db.on("disconnected", () => console.log("MongoDB Disconnected"));
+// mongoose.connect(currentDB);
+// const db = mongoose.connection;
+// db.on("error", (error) => console.log(`ERROR: ${error.message}`));
+// db.on("connected", () => console.log(`MongoDB Connected: ${currentDB}`));
+// db.on("disconnected", () => console.log("MongoDB Disconnected"));
 
 // MIDDLEWARE
 app.use(express.json());
@@ -52,6 +65,10 @@ app.get(
     });
   }
 );
+
+ 
+ 
+
 
 app.use(profilePictureRouter)
 

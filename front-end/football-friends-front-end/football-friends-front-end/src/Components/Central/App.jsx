@@ -13,6 +13,7 @@ import ViewUser from "../User/ViewUser";
 import ViewAdmiredPlayer from "../User/ViewAdmiredPlayer";
 import LikesReceived from "../User/LikesReceived";
 import LikesSent from "../User/LikesSent";
+import "../../Styling/index.css"
 
 function App() {
   return (
