@@ -12,9 +12,11 @@ const jwt = require("jsonwebtoken");
 
 dotenv.config()
 
+
 const port = process.env.EXPRESS_PORT || 5001
 const localDB = 'mongodb://localhost:27017/football-friends'
 const currentDB = process.env.MONGODB_URI || localDB;
+
 
 // Require Passport Strategy and Options
 const strategy = require("./Authentication/passportStrategy");
@@ -44,9 +46,7 @@ mongoose.connection.once('open', () => console.log('Connected to MongoDB'));
 app.use(express.json());
 
 app.use(
-  cors({
-    origin: "http://localhost:3000",
-  })
+  cors()
 );
 
 
