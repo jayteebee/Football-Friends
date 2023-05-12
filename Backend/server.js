@@ -13,9 +13,11 @@ const jwt = require("jsonwebtoken");
 dotenv.config()
 
 
-const port = process.env.EXPRESS_PORT || 5001
+const port =  5001
+// process.env.EXPRESS_PORT ||
 const localDB = 'mongodb://localhost:27017/football-friends'
-const currentDB = process.env.MONGODB_URI || localDB;
+const currentDB =  localDB;
+// process.env.MONGODB_URI ||
 
 
 // Require Passport Strategy and Options
