@@ -101,3 +101,126 @@ https://docs.google.com/document/d/1TWpg1u1rXhTKCyDuWgDQZmLaGjY8xo24nyqrrdJnQvM/
 https://github.com/users/jayteebee/projects/1
 
 - For Project Management systems, we've made use of GitHub Projects.
+
+## Timeframe And Working Team
+
+We were given this project on the 4th May, 2023 and were tasked to submit and deploy by Friday 12th.
+Team members:
+
+- Tom Court
+- Karl Matthews
+- Jack Coots
+- Jethro Block
+
+## Back End Technologies Used
+
+- Express
+- Mongoose
+- MongoDB
+- Axios
+- Bcrypt
+- Cors
+- JsonWebToken
+- Multer
+- Passport
+- Passport-jwt
+
+## Brief
+
+### Planning
+
+- Have a thoroughly documented Team Expectations Google document / markdown file.
+- Have a thoroughly developed, beautiful README.md file.
+- Take time for each team member to discuss where they feel strongest and weakest, in terms of coding ability.
+- Create a Excalidraw or Whimsical document to convey the data flow with component hierarchy included.
+
+### Collaboration
+
+- Contribute equally.
+- Have a solid understanding of the entire project. (Even the features implemented by other team members.)
+- Take time to pair program with teammates to reinforce learning.
+- Be prepared to explain sections of code that were written by teammates.
+
+### Client (Front End)
+
+- Have a working, interactive React app, built using npx create-react-app client
+- Have at least 6 separate, rendered components in an organized and understandable React file structure.
+- Use only React for DOM Manipulation.
+- Consume data from your API, and render that data in your components.
+- Utilize React Router, for client-side routing.
+- Authentication!
+
+### Server (Back End)
+
+- Have working generic router actions for CRUD using Express, Mongoose, and MongoDB.
+- Have at least 2 models (more if it makes sense)
+- Have full CRUD on at least one of your models
+- Be able to Add/Delete on any remaining models (if it makes sense)
+- Authentication!
+
+### Styling
+
+- Be styled with CSS.
+- Use flexbox (display: flex) or CSS Grid.
+- Implement responsive design on 2 screen sizes (including desktop) using a media query (mobile).
+- You can use a CSS framework if you want to.
+- Linting
+- Indent properly.
+- Utilize high-quality, semantic variable names and follow naming conventions.
+- Remove unnecessary boilerplate React files and code.
+- Remove all console.log()s and commented out code (functional notes/comments are okay).
+
+### Deployment
+
+- Deploy the fully functional front-end via GitHub Pages or Vercel.
+- Deploy the back-end via Heroku (or vercel).
+- Deploy the MongoDB database on MongoDB Atlas.
+- More details on how to deploy will be shared later separately.
+
+### Procedural
+
+- Have frequent commits from every team member dating back to the very beginning of the project. These commits should total to or exceed 50.
+- Commit often and use meaningful commit messages
+- Use effective and safe branching and merging processes.
+- Every team member must have commits contributing to the project.
+- Pair programming is allowed and should be noted in the commit by using @github_username of each developer pairing
+- No single developer should do a majority of the commits
+- Document your code well.
+
+### Stretch Goals
+
+- Build a UML Use-case diagram
+- Use JSDoc to document your project
+- Use a 3rd party API
+- High quality, professional design
+- useContext
+- Allow users to upload files
+
+## Planning
+
+- Much of our planning process can be seen at the top of this document.
+- One key point to add is that once we had started to work on the project, we made good use of Github’s Project planning tool to create and track tickets which needed to be completed. We were then able to - claim responsibility of certain tasks and make sure tasks were being complete in the correct fashion.
+
+## Build Process
+
+## Challenges
+
+- One of the challenges we faced within the project was how to divvy up responsibilities to ensure that everyone had at least some exposure to areas of coding with which they’re not as comfortable.
+- Once we had started to merge the front/back end (as detailed below) we decided that it’d be an opportune time to switch roles for a day so we could achieve the goal stated above.
+- Safe to say it was a bit of a challenge getting up to speed, but certainly a worthwhile process as not much time was lost making progress towards the MVP.
+
+## Wins
+
+- One of the big wins that we experienced collectively as a team was the ability to communicate clearly and efficiently throughout the course of the project.
+- Doing so meant that we encountered very few merge conflicts, and when they did occur they were minor and didn’t take too long to sort out.
+- This was born out of the discussions we had whilst planning. We all agreed that the best way to approach a group project was to put communication as the main priority.
+- This looked like frequent screen sharing and group git pushing, code debugging and progress reports.
+- Approaching the project in this manner not only lead to a less stressful Project week, but also an end product that we could be proud of.
+- Another big win for the team was when we joined the front and back end.
+- Doing so was quite a pivotal moment in the project as up until then, the two code bases hadn’t connected and the nature of our approach (a front/back end split in pairs) meant although we knew what each - - other was doing, we didn’t have hands on experience in each others code base.
+
+## Future Improvements
+
+- Excalidraw
+- Excalidraw — Collaborative whiteboarding made easy
+- Excalidraw is a virtual collaborative whiteboard tool that lets you easily sketch diagrams that have a hand-drawn feel to them. (27 kB)
