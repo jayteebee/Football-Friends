@@ -16,6 +16,18 @@ export default function Homepage() {
   const [selectedClub, setSelectedClub] = useState("");
   const [clubUsers, setClubUsers] = useState([]);
 
+  //picture change
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleMouseEnter = () => {
+    setIsHovered(true);
+  };
+
+  const handleMouseLeave = () => {
+    setIsHovered(false);
+  };
+  // end picture change
+
   useEffect(() => {
     getAllUsers().then((output) => setAllUsers(output));
   }, []);
@@ -29,7 +41,7 @@ export default function Homepage() {
       );
       setLocalUsers(filteredUsers);
     } else {
-      setLocalUsers(allUsers);
+      setLocalUsers("");
     }
   };
 
@@ -43,46 +55,55 @@ export default function Homepage() {
       );
       setClubUsers(filteredUsers);
     } else {
-      setClubUsers(allUsers);
+      setClubUsers("");
     }
   };
 
   const filteredUsers = localUsers;
 
-
-return (
-  <Container fluid className="d-flex flex-column">
-    <br />
-    <div
-      className="d-flex justify-content-center align-items-center"
-      style={{ height: "30vh" }}
+  return (
+    <Container
+      fluid
+      className="d-flex flex-column"
+      style={{ minHeight: "100vh" }}
     >
+      <br />
       <div
-        style={{
-          height: "350px",
-          width: "350px",
-          overflow: "hidden",
-          borderRadius: "50%",
-          backgroundColor: "transparent",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
+        className="d-flex justify-content-center align-items-center"
+        style={{ height: "30vh" }}
       >
-        <img
-          src="https://i.imgur.com/AGm0oCR.png"
-          alt="your-image-description"
-          className="img-fluid"
+        <div
           style={{
-            width: "auto",
-            height: "auto",
-            clipPath: "circle(38% at 50% 50%)",
+            height: "350px",
+            width: "350px",
+            overflow: "hidden",
+            borderRadius: "50%",
+            backgroundColor: "transparent",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
           }}
-        />
+        >
+          <img
+            src={
+              isHovered
+                ? "https://img.buzzfeed.com/buzzfeed-static/static/2015-08/19/10/campaign_images/webdr12/27-of-the-funniest-most-hilarious-quotes-from-the-2-3042-1439993077-0_dblbig.jpg"
+                : "https://i.imgur.com/AGm0oCR.png"
+            }
+            alt="your-image-description"
+            className="img-fluid"
+            style={{
+              width: "auto",
+              height: "auto",
+              clipPath: "circle(38% at 50% 50%)",
+              transform: isHovered ? "scale(.95) rotate(720deg)" : "none",
+              transition: "transform 0.4s ease",
+            }}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
+          />
+        </div>
       </div>
-    </div>
-
-
       <br />
       <br />
       <div className="homepage">
@@ -151,29 +172,30 @@ return (
                 <option value="Wiltshire">Wiltshire</option>
               </Form.Select>
               <ul className="list-unstyled mt-3">
-                {localUsers.map((user, index) => (
-                  <Link
-                    to="/ViewUser"
-                    state={{ id: user._id }}
-                    key={index}
-                    style={{ textDecoration: "none" }}
-                  >
-                    <li
-                      className={`mb-3 border p-3 rounded ${
-                        index === 0 ? "mt-3" : ""
-                      }`}
+                {localUsers &&
+                  localUsers.map((user, index) => (
+                    <Link
+                      to="/ViewUser"
+                      state={{ id: user._id }}
+                      key={index}
+                      style={{ textDecoration: "none" }}
                     >
-                      <span className="fw-bold link-unstyled">
-                        {user.profileName}
-                      </span>
-                      <br />
-                      {user.favouriteTeam}
-                      <br />
-                      Favourite Player: {user.playersAdmired[0].name}
-                      <br />
-                    </li>
-                  </Link>
-                ))}
+                      <li
+                        className={`mb-3 border p-3 rounded ${
+                          index === 0 ? "mt-3" : ""
+                        }`}
+                      >
+                        <span className="fw-bold link-unstyled">
+                          {user.profileName}
+                        </span>
+                        <br />
+                        {user.favouriteTeam}
+                        <br />
+                        Favourite Player: {user.playersAdmired[0].name}
+                        <br />
+                      </li>
+                    </Link>
+                  ))}
               </ul>
             </div>
           </div>
@@ -207,40 +229,40 @@ return (
                 <option value="Wolves">Wolverhamton Wanderers</option>
               </Form.Select>
               <ul className="list-unstyled mt-3">
-                {clubUsers.map((user, index) => (
-                  <Link
-                    to="/ViewUser"
-                    state={{ id: user._id }}
-                    key={index}
-                    style={{ textDecoration: "none" }}
-                  >
-                    <li
-                      className={`mb-3 border p-3 rounded ${
-                        index === 0 ? "mt-3" : ""
-                      }`}
+                {clubUsers &&
+                  clubUsers.map((user, index) => (
+                    <Link
+                      to="/ViewUser"
+                      state={{ id: user._id }}
+                      key={index}
+                      style={{ textDecoration: "none" }}
                     >
-                      <span className="fw-bold">{user.profileName}</span>
-                      <br />
-                      {user.location}
-                      <br />
-                      Favourite Player: {user.playersAdmired[0].name}
-                      <br />
-                    </li>
-                  </Link>
-                ))}
+                      <li
+                        className={`mb-3 border p-3 rounded ${
+                          index === 0 ? "mt-3" : ""
+                        }`}
+                      >
+                        <span className="fw-bold">{user.profileName}</span>
+                        <br />
+                        {user.location}
+                        <br />
+                        Favourite Player: {user.playersAdmired[0].name}
+                        <br />
+                      </li>
+                    </Link>
+                  ))}
               </ul>
             </div>
           </div>
+
           <div className="col-md-2"></div>
         </div>
-        <div className="col-md-2"></div>
       </div>
       <div className="row flex-grow-1">
         <div className="col-md-2"></div>
         <div className="col-md-4 d-flex flex-column justify-content-center">
           <div className="newUsers">
             <h2 className="text-center"></h2>
-
           </div>
           <div className="col-md-4 d-flex justify-content-center">
             <br />
@@ -254,35 +276,3 @@ return (
     </Container>
   );
 }
-
-// const test = getAllUsers()
-// console.log(test)
-
-// const test2 = getOneUser("6454e712e12f643ac6218e6a")
-// console.log(test2)
-
-// const test3 = createUser({
-//   email: "test frontend email",
-//   password: "frontend pass test"
-// })
-// console.log(test3)
-
-// const test4 = updateUser("64567cde27c32f9e4e6f7cc6", {
-//   email: "updated frontend email"
-// })
-// console.log(test4)
-
-// const test5 = createAdmiredPlayer("64567cde27c32f9e4e6f7cc6", {
-//   name: "test 3 name",
-//   reasonAdmired: "test 3 test"
-// })
-// console.log(test5)
-
-// const test6 = deleteAdmiredPlayer("64567cde27c32f9e4e6f7cc6", "64567f7227c32f9e4e6f7ce2")
-// console.log(test6)
-
-// const test7 = updateAdmiredPlayer("64567cde27c32f9e4e6f7cc6", "6456803b27c32f9e4e6f7d22", {
-//   name: "new test",
-//   reasonAdmired: "hi"
-// })
-// console.log(test7)

@@ -23,8 +23,6 @@ export default function Login() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    console.log("Email:", email);
-    console.log("Password:", password);
     login({
       email: email,
       password: password,
@@ -55,7 +53,7 @@ export default function Login() {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              margin: "0 auto", 
+              margin: "0 auto",
             }}
           >
             <img
@@ -101,7 +99,7 @@ export default function Login() {
                 </Form.Group>
                 <Form.Group className="d-flex justify-content-center">
                   <Button
-                    variant="primary"
+                    className="btn btn-dark subtle-animation"
                     type="submit"
                     style={{ margin: "0 10px" }}
                   >
@@ -145,7 +143,7 @@ export default function Login() {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              margin: "0 auto", 
+              margin: "0 auto",
             }}
           >
             <img
@@ -170,7 +168,7 @@ export default function Login() {
             <Col></Col>
             <Col className="d-flex align-items-start justify-content-center mt-auto">
               <Button
-                variant="primary"
+                className="btn btn-dark subtle-animation"
                 onClick={logoutAuth}
                 style={{ margin: "0 1px" }}
               >

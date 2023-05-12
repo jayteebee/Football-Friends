@@ -1,5 +1,3 @@
-// Profile.jsx
-
 import { Container, Row, Col, Card, Button, Form } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import ProfilePictureUpload from "./ProfilePictureUpload/ProfilePictureUpload";
@@ -18,17 +16,14 @@ function Profile() {
   const [admiredPlayers, setAdmiredPlayers] = useState(
     <h4>No Admired Players</h4>
   );
+
   const [imageSrc, setImageSrc] = useState(
     "https://example.com/profile-picture.jpg"
   );
+
   const [changingFavTeam, setChangingFavTeam] = useState(false);
   const [editing, setEditing] = useState(false);
-  // const [username, setUsername] = useState("johndoe");
-  // const [name, setName] = useState("John Doe");
-  // const [location, setLocation] = useState("New York");
   const [selectedTeam, setSelectedTeam] = useState(userInfo.favouriteTeam);
-  // const [favoriteTeam, setFavoriteTeam] = useState("");
-  // const [favoriteTeamReason, setFavoriteTeamReason] = useState("");
   const [newAdmiredPlayer, setNewAdmiredPlayer] = useState({
     name: "",
     age: "",
@@ -52,13 +47,6 @@ function Profile() {
   function handleDeleteAdmiredPlayer(e, playerID) {
     e.preventDefault();
     deleteAdmiredPlayer(localStorage.getItem("userID"), playerID)
-      // .then(() =>
-      //   getOneUser(localStorage.getItem("userID")).then((output) => {
-      //     console.log("User from Backend: ******", output);
-
-      //     setUserInfo(output);
-      //   })
-      // );
       .then(() =>
         userInfo.playersAdmired.filter((player) => player._id !== playerID)
       )
@@ -80,15 +68,12 @@ function Profile() {
       setUserInfo(output)
     );
   }, []);
+
   useEffect(() => {
-    // console.log("userInfo updated", userInfo);
     if (userInfo.playersAdmired) {
-      // console.log("condition 1 true");
       if (userInfo.playersAdmired.length > 0) {
-        // console.log("condition 2 true");
       }
     }
-
     if (userInfo.playersAdmired && userInfo.playersAdmired.length > 0) {
       setAdmiredPlayers(
         userInfo.playersAdmired.map((player, index) => {
@@ -112,6 +97,7 @@ function Profile() {
     setSelectedTeam(event.target.value);
     setUserInfo({ ...userInfo, favoriteTeam: event.target.value });
   };
+
   const handleSave = (event) => {
     event.preventDefault();
     setChangingFavTeam(!changingFavTeam);
@@ -120,10 +106,6 @@ function Profile() {
     );
     setSelectedTeam("");
   };
-
-  // const handleReasonChange = (event) => {
-  //   setFavoriteTeamReason(event.target.value);
-  // };
 
   function handleEditSubmit(event) {
     setEditing(!editing);
@@ -141,9 +123,9 @@ function Profile() {
   }
 
   return (
-    <div>
     <Container fluid className="d-flex flex-column">
       <br />
+      <Col></Col>
       <div
         className="d-flex justify-content-center align-items-center"
         style={{ height: "30vh" }}
@@ -172,18 +154,9 @@ function Profile() {
           />
         </div>
       </div>
-      <Row className="mt-4">
-        <Col md={4}>
-          <Card>
-            <Card.Img variant="top" src={imageSrc} alt="Profile" />
-            <Card.Body>
-              <ProfilePictureUpload />
-            </Card.Body>
-          </Card>
-        </Col>
-
+      <Row className="mt-3 justify-content-center">
         <Col md={8}>
-          <Card className="mb-4 card-user">
+          <Card className="mb-3 card-user shadow">
             <Card.Body>
               {editing ? (
                 <>
@@ -217,6 +190,7 @@ function Profile() {
                     />
                   </Form.Group>
                   <Button
+                    className="subtle-animation shadow mt-2"
                     variant="success"
                     onClick={(event) =>
                       editing ? handleEditSubmit(event) : setEditing(!editing)
@@ -227,10 +201,17 @@ function Profile() {
                 </>
               ) : (
                 <>
-                  <h2>Name: {userInfo.profileName}</h2>
-                  <p>Location: {userInfo.location || "Not yet set"}</p>
+                  <h2>
+                    {" "}
+                    <strong class="fw-bold">{userInfo.profileName}</strong>
+                  </h2>
+                  <p>
+                    <strong class="fw-bold">Location:</strong>{" "}
+                    {userInfo.location || "Not yet set"}
+                  </p>
                   <Button
-                    variant="dark"
+                    className="subtle-animation shadow"
+                    variant="dark btn-sm"
                     onClick={(event) =>
                       editing ? handleEditSubmit(event) : setEditing(!editing)
                     }
@@ -242,15 +223,19 @@ function Profile() {
             </Card.Body>
           </Card>
 
-          <Card className="mb-4 card-favorite">
+          <Card className="mb-3 card-favorite shadow">
             <Card.Body>
-              <h3>Favorite Team: {userInfo.favouriteTeam || "not chosen"}</h3>
+              <h3>
+                <strong class="fw-bold">Favorite Team:</strong>{" "}
+                {userInfo.favouriteTeam || "not chosen"}
+              </h3>
               {!changingFavTeam && (
                 <Button
-                  variant="dark"
+                  className="subtle-animation shadow"
+                  variant="dark btn-sm"
                   onClick={() => setChangingFavTeam(!changingFavTeam)}
                 >
-                  Change Favorite Team
+                  Choose Favorite Team
                 </Button>
               )}
 
@@ -296,16 +281,22 @@ function Profile() {
                       </option>
                     </Form.Control>
                   </Form.Group>
-                  <Button variant="success" type="submit">
+                  <Button
+                    className="subtle-animation shadow mt-2"
+                    variant="success btn-sm"
+                    type="submit"
+                  >
                     Save
                   </Button>
                 </Form>
               )}
             </Card.Body>
           </Card>
-          <Card className="mb-4 card-addAdmired">
+          <Card className="mb-3 card-addAdmired shadow">
             <Card.Body>
-              <h3>Add Admired Player</h3>
+              <h3>
+                <strong class="fw-bold">Add Admired Player</strong>
+              </h3>
               <Form onSubmit={addAdmiredPlayer}>
                 <Row>
                   <Col>
@@ -382,7 +373,8 @@ function Profile() {
                   </Col>
                 </Row>
                 <Button
-                  variant="dark"
+                  className="subtle-animation shadow"
+                  variant="dark btn-sm"
                   type="submit"
                   style={{ marginTop: "10px" }}
                 >
@@ -392,16 +384,17 @@ function Profile() {
             </Card.Body>
           </Card>
 
-          <Card className="mb-4 card-admired">
+          <Card className="mb-5 card-admired shadow">
             <Card.Body>
-              <h2>Admired Players</h2>
+              <h2>
+                <strong class="fw-bold">Admired Players</strong>
+              </h2>
               {admiredPlayers}
             </Card.Body>
           </Card>
         </Col>
       </Row>
     </Container>
-    </div>
   );
 }
 export default Profile;
