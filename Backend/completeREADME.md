@@ -199,7 +199,7 @@ One key point to add is that once we had started to work on the project, we made
 
 ### Authentication
 
-As listed above, one of the MVP requirements for this project was implementing authentication for the application. Given this was a new and quite difficult challenge, it is worth calling out how we approached this and how we got on.
+As listed above, one of the MVP requirements for this project was implementing authentication for the application. Given this was a new and quite difficult challenge, it's worth calling out how we approached this and how we got on.
 
 When we first started to tackle this feature, it was evident that there wasn't a clear understanding of all the moving parts involved in authentication. It therefore felt sensible to actually sketch out a high level flow of all the steps involved.
 
