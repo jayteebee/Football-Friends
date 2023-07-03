@@ -1,4 +1,7 @@
-const URL = "http://localhost:5001";
+const URL = process.env.NODE_ENV === 'production' 
+                ? 'https://football-friends-fe-eed04d18a3d7.herokuapp.com/' 
+                : 'http://localhost:5001'
+
 
 export const createAdmiredPlayer = async (id, data) => {
   try {
