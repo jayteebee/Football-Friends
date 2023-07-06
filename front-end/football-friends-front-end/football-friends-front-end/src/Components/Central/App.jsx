@@ -6,7 +6,7 @@ import Messages from "../User/Messages";
 import Search from "../Navigation/Search";
 import Login from "../Authentication/Login";
 import Register from "../Authentication/Register";
-import { HashRouter as Router, Route } from "react-router-dom";
+import {  Routes, Route } from "react-router-dom";
 import React from "react";
 import AllUsers from "../User/AllUsers";
 import ViewUser from "../User/ViewUser";
@@ -19,7 +19,7 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-      <Router>
+      <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/friends" element={<Friends />} />
@@ -32,7 +32,7 @@ function App() {
         <Route path="/ViewAdmiredPlayer" element={<ViewAdmiredPlayer />} />
         <Route path="/LikesReceived" element={<LikesReceived />} />
         <Route path="/LikesSent" element={<LikesSent />} />
-      </Router>
+      </Routes>
     </div>
   );
 }
