@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Football-Friends/static/css/main.8efc26aa.css",
-    "main.js": "/Football-Friends/static/js/main.f5cb6f37.js",
+    "main.js": "/Football-Friends/static/js/main.84cbc6c8.js",
     "static/js/787.589ce206.chunk.js": "/Football-Friends/static/js/787.589ce206.chunk.js",
     "index.html": "/Football-Friends/index.html",
     "main.8efc26aa.css.map": "/Football-Friends/static/css/main.8efc26aa.css.map",
-    "main.f5cb6f37.js.map": "/Football-Friends/static/js/main.f5cb6f37.js.map",
+    "main.84cbc6c8.js.map": "/Football-Friends/static/js/main.84cbc6c8.js.map",
     "787.589ce206.chunk.js.map": "/Football-Friends/static/js/787.589ce206.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.8efc26aa.css",
-    "static/js/main.f5cb6f37.js"
+    "static/js/main.84cbc6c8.js"
   ]
 }
