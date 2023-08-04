@@ -1,5 +1,5 @@
 const URL = process.env.NODE_ENV === 'production' 
-                ? 'https://jayteebee.github.io/Football-Friends/' 
+                ? 'https://jayteebee.github.io/Football-Friends' 
                 : 'http://localhost:5001'
 
 
