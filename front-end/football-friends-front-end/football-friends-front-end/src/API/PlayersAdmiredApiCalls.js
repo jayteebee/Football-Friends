@@ -1,5 +1,5 @@
 const URL = process.env.NODE_ENV === 'production' 
-                ? 'https://football-friends-07e5cb0be881.herokuapp.com/' 
+                ? 'https://jayteebee.github.io/Football-Friends/' 
                 : 'http://localhost:5001'
 
 
