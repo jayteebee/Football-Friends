@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Football-Friends/static/css/main.8efc26aa.css",
-    "main.js": "/Football-Friends/static/js/main.84cbc6c8.js",
-    "static/js/787.589ce206.chunk.js": "/Football-Friends/static/js/787.589ce206.chunk.js",
-    "index.html": "/Football-Friends/index.html",
-    "main.8efc26aa.css.map": "/Football-Friends/static/css/main.8efc26aa.css.map",
-    "main.84cbc6c8.js.map": "/Football-Friends/static/js/main.84cbc6c8.js.map",
-    "787.589ce206.chunk.js.map": "/Football-Friends/static/js/787.589ce206.chunk.js.map"
+    "main.css": "/jayteebee/Football-Friends/blob/JB-Dev/front-end/football-friends-front-end/football-friends-front-end/public/index.html/static/css/main.8efc26aa.css",
+    "main.js": "/jayteebee/Football-Friends/blob/JB-Dev/front-end/football-friends-front-end/football-friends-front-end/public/index.html/static/js/main.6c772a0b.js",
+    "static/js/787.589ce206.chunk.js": "/jayteebee/Football-Friends/blob/JB-Dev/front-end/football-friends-front-end/football-friends-front-end/public/index.html/static/js/787.589ce206.chunk.js",
+    "index.html": "/jayteebee/Football-Friends/blob/JB-Dev/front-end/football-friends-front-end/football-friends-front-end/public/index.html/index.html",
+    "main.8efc26aa.css.map": "/jayteebee/Football-Friends/blob/JB-Dev/front-end/football-friends-front-end/football-friends-front-end/public/index.html/static/css/main.8efc26aa.css.map",
+    "main.6c772a0b.js.map": "/jayteebee/Football-Friends/blob/JB-Dev/front-end/football-friends-front-end/football-friends-front-end/public/index.html/static/js/main.6c772a0b.js.map",
+    "787.589ce206.chunk.js.map": "/jayteebee/Football-Friends/blob/JB-Dev/front-end/football-friends-front-end/football-friends-front-end/public/index.html/static/js/787.589ce206.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.8efc26aa.css",
-    "static/js/main.84cbc6c8.js"
+    "static/js/main.6c772a0b.js"
   ]
 }
