@@ -2,7 +2,7 @@
   "name": "football-friends-front-end",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://jayteebee.github.io/Football-Friends",
+  "homepage": "https://github.com/jayteebee/Football-Friends/blob/JB-Dev/front-end/football-friends-front-end/football-friends-front-end/public/index.html",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
